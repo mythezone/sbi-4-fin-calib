@@ -246,7 +246,7 @@ if __name__ == "__main__":
 							  "nsim simulations, e.g. 1000x10 asks for 10 " + 
 							  "rounds of 1000 simulation each."))
 	parser.add_argument('--outloc', type=str,
-						help="Location to dump inference results.")
+						help="Location to dump inference results.",default="./results")
 	parser.add_argument('--scale', type=float,
 						help="Scale (> 0) for MCMC proposal covariance.")
 	parser.add_argument('--R', type=int, nargs="?", default=1,

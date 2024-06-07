@@ -58,3 +58,29 @@ Applying these methods to a new model not contained in this respository can be d
 * Add details on the prior density, model instantiation, and "true" data in the `utils/io.py` file
 * Ensure the density (ratio) estimator is equipped with an appropriate embedding network in the `utils/job_script.py` and `inference/neural.py` files
 * Training the density (ratio) estimator using the same command as in the **Example usage** section above
+
+
+```bash
+Job script for sbi4abm
+
+options:
+  -h, --help            show this help message and exit
+  --task TASK           Name of inference task to run. Current choices are:
+                        - bh_noisy
+                        - bh_smooth
+                        - fw_hpm
+                        - hop
+                        - mvgbm
+  --method METHOD       Name of density estimator/classifier. Suffix '_s' indicates that no embedding net is to be used.
+  --nsims NSIMS [NSIMS ...]
+                        Number of simulations to run, e.g. 1000 1000 2000 indicates 3 rounds with 1000 in first two and 2000 in third. Alternatively, write <nsim>x<nround> to ask for nround rounds of nsim simulations, e.g. 1000x10 asks for 10 rounds of 1000 simulation each.
+  --outloc OUTLOC       Location to dump inference results.
+  --scale SCALE         Scale (> 0) for MCMC proposal covariance.
+  --R [R]               Number of simulations per likelihood evaluation for KDE.
+  --save_sim_prior      If included, the simulator and prior are saved to outloc
+  --sbc                 If included, simulation-based calibration is performed
+  --sampler SAMPLER     Which sampling method to use for (S)NRE for the final posterior samples. ['sir', 'mh']
+  --load_post [LOAD_POST]
+                        Location to load an pretrained posterior from
+  --nw [NW]             Number of workers to use in simulating for sbi
+```
